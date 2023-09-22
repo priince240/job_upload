@@ -1,0 +1,51 @@
+{%extends 'index.html'%}
+{%block head%}
+<style>
+    .top{
+        font-size: 50px;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        color: rgb(42, 247, 15) ;
+    }
+    .div{
+        margin: auto;
+        width: 550px;
+        height: auto;
+        margin-top: 20px;
+        padding:20px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        font-size: 25px;
+        border: 3px solid rgb(1, 1, 1);
+        border-radius:10px;
+        box-shadow: 4px 3px 25px 3px rgb(119, 118, 118,.5);
+        background-color: rgba(10, 10, 10, 0.25);
+    }
+    .input input{
+        background: transparent;
+        border: 0px;
+        border-bottom:3px solid rgb(8, 8, 8);
+        color:rgb(4, 4, 4)
+    }
+</style>
+{%endblock head%}
+{%block body%}
+<br><br>
+<center><h1 class="top"><u>LOG IN</u></h1></center>
+{%if messages%}
+{%for message in messages%}
+{{message}} <br> 
+{%endfor%}
+{%endif%}
+<br>
+<div class="div">
+    <form action="/login" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        {%for i in data%}
+        <span style="color:white">{{i.label_tag}}</span> <span class="input">{{i}}</span>{{i.errors}} <br><br>
+        {%endfor%}
+        <center><button type="submit" style="color:rgb(59, 240, 23);border-radius:5px;border:0px;font-weight:bolder;background:transparent">log in</button></center>
+    </form>
+</div>
+
+{%endblock body%}

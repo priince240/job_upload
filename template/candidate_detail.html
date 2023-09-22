@@ -1,0 +1,83 @@
+{%extends 'index.html'%}
+{%block head%}
+<style>
+    .div{
+        margin: auto;
+        margin-top: 100px;
+        width: 700px;
+        border: 3px solid rgb(0, 0, 0);
+        border-radius:15px ;
+        box-shadow: 3px 3px 20px 3px rgb(1, 1, 1);
+        padding-left: 50px;
+        padding-top: 10px;
+        background-color: rgb(216, 212, 212,0.75);
+    }
+ .th{
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+ }
+ .td{
+    margin: 20px ;
+    padding:20px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+
+ }
+ @media screen and (max-width:700px){
+    .div{
+        margin: auto;
+        margin-top: 100px;
+        width: 500px;
+        border: 3px solid rgb(0, 0, 0);
+        border-radius:15px ;
+        box-shadow: 3px 3px 20px 3px rgb(1, 1, 1);
+        padding-left: 30px;
+        padding-top: 10px;
+        background-color: rgb(216, 212, 212,0.75);
+    }
+ .th{
+    margin: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+ }
+ .td{
+    margin: 20px ;
+    padding:15px;
+    font-size: 13px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+
+ }
+ }
+</style>
+{%endblock head%}
+{%block body%}
+<div class="div">
+    <center><h1><b><u>candidate_profile</u></b></h1></center>
+    <table>
+        <thead >
+            <th class="th">NAME</th>        
+            <th class="th">DOWNLOAD_PHOTO</th>
+            <th class="th">DOWNLOAD_RESUME</th>
+          
+        </thead>
+        <tbody >
+            {%for i in data%}
+            <tr>
+                <td class="td">{{i.name}}</td>
+                <td class="td"><a href="/photo/{{i.id}}">photo</a></td>
+                <td class="td"><a href="/download-resume/{{i.id}}">download-resume</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+
+</div>
+
+
+{%endblock body%}

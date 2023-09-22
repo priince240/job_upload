@@ -1,0 +1,77 @@
+{%extends 'index.html'%}
+{%block head%}
+<style>
+    .div{
+        margin: auto;
+        width: 750px;
+        height: auto;
+        margin-top: 20px;
+        padding:50px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        font-size: 25px;
+        border: 3px solid rgb(0, 0, 0);
+        border-radius:10px;
+        box-shadow: 4px 3px 25px 3px rgb(13, 13, 13);
+        background-color: rgb(237, 231, 231,0.75);
+        color: rgb(2, 2, 2);
+    }
+    .input{
+        background: transparent;
+        color: rgb(0, 0, 0);
+        border: 0px;
+        border-bottom: 3px solid rgb(6, 6, 6);
+
+    }
+    .option{
+        color: black;
+    }
+    @media screen and (max-width:700px){
+        .div{
+            margin: auto;
+            width: 500px;
+            height: auto;
+            margin-top: 20px;
+            padding:30px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 20px;
+            border: 3px solid rgb(253, 250, 250);
+            border-radius:10px;
+            box-shadow: 4px 3px 25px 3px rgb(0, 0, 0);
+            background-color: rgba(199, 195, 195, 0.75);
+            color: rgb(0, 0, 0);
+        }
+        .input{
+            background: transparent;
+            color: rgb(0, 0, 0);
+            border: 0px;
+            border-bottom: 3px solid rgb(4, 4, 4);
+    
+        }
+        .option{
+            color: black;
+        }
+    }
+</style>
+{%endblock head%}
+
+{%block body%}
+<center style="color: rgb(1, 1, 0);font-size:50px;"><b><u>job uploads</u></b></center>
+<div class="div">
+    <form action="/jobupload" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        JOBTITLE : <input type="text" placeholder="Enter job title " class="input" name="jobtitle"><br><br>
+        COMPANY : <input type="text" placeholder="Enter company name " class="input" name="company"><br><br>
+        SALARY : <input type="text" placeholder="Enter budget" class="input" name="salary"><br><br>
+        EXPERIENCE : <input type="text" placeholder="enter require experience" class="input" name="experience_year"><br><br>
+        POSTED : <input type="date" placeholder="job post date" class="input" name="posted"><br><br>
+        application deadline:<input type="date" placeholder="application deadline" class="input" name="application_deadline"><br><br>
+        location : <input type="text" placeholder="enter location" class="input" name="location"><br><br>
+        OPENINGS : <input type="text" placeholder="number of candidate" class="input" name="openings"><br><br>
+        JOBHIGHLIGHTS : <textarea name="jobhighlights" placeholder="enter highlights" cols="30" rows="10" class="input"></textarea><br><br>
+        <center><button type="submit" style="color: greenyellow;background-color:black;">post</button></center>
+    </form>
+
+</div>
+{%endblock body%}

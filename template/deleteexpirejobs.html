@@ -1,0 +1,88 @@
+{%extends 'index.html'%}
+{%block head%}
+<style>
+    .div{
+        margin: auto;
+        margin-top: 100px;
+        width: 700px;
+        border: 3px solid rgb(0, 0, 0);
+        border-radius:15px ;
+        box-shadow: 3px 3px 20px 3px rgb(1, 1, 1);
+        padding-left: 50px;
+        padding-top: 10px;
+        background-color: rgb(216, 212, 212,0.75);
+    }
+ .th{
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+ }
+ .td{
+    margin: 20px ;
+    padding:20px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+
+ }
+ @media screen and (max-width:700px){
+    .div{
+        margin: auto;
+        margin-top: 100px;
+        width: 500px;
+        border: 3px solid rgb(0, 0, 0);
+        border-radius:15px ;
+        box-shadow: 3px 3px 20px 3px rgb(1, 1, 1);
+        padding-left: 15px;
+        padding-top: 10px;
+        background-color: rgb(216, 212, 212,0.75);
+    }
+ .th{
+    margin: 10px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+ }
+ .td{
+    margin: 20px ;
+    padding:12px;
+    font-size: 13px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+
+ }
+ }
+</style>
+{%endblock head%}
+{%block body%}
+<div class="div">
+    <center><h1><b><u>jobs details</u></b></h1></center>
+    <table>
+        <thead >
+            <th class="th">jobtittle</th>        
+            <th class="th">company</th>
+            <th class="th">posted</th>
+            <th class="th">application_deadline</th>
+            <th class="th">-</th>
+          
+        </thead>
+        <tbody >
+            {%for i in data%}
+            <tr>
+                <td class="td">{{i.jobtitle}}</td>
+                <td class="td">{{i.company}}</td>
+                <td class="td">{{i.posted}}</td>
+                <td class="td">{{i.application_deadline}}</td>
+                <td class="td"><a href="/delete/{{i.id}}">delete</a></td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+
+</div>
+
+
+{%endblock body%}

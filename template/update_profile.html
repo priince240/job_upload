@@ -1,0 +1,118 @@
+{%extends 'index.html'%}
+{%block head%}
+<style>
+    .div{
+        margin: auto;
+        width: 750px;
+        height: auto;
+        margin-top: 20px;
+        padding:30px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        font-size: 15px;
+        border: 3px solid rgb(0, 0, 0);
+        border-radius:10px;
+        box-shadow: 4px 3px 25px 3px rgb(32, 31, 31);
+        background-color: rgba(223, 220, 220, 0.75);
+        color: rgb(0, 0, 0);
+    }
+    .input{
+        background: transparent;
+        color: rgb(5, 5, 5);
+        border: 0px;
+        border-bottom: 3px solid rgb(0, 0, 0);
+
+    }
+    .option{
+        color: black;
+    }
+    @media screen and (max-width:700px){
+        .div{
+            margin: auto;
+            width: 500px;
+            height: auto;
+            margin-top: 20px;
+            padding:10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 10px;
+            border: 3px solid rgb(253, 250, 250);
+            border-radius:10px;
+            box-shadow: 4px 3px 25px 3px rgb(0, 0, 0);
+            background-color: rgba(226, 222, 222, 0.5);
+            color: rgb(0, 0, 0);
+        }
+        .input{
+            background: transparent;
+            color: rgb(0, 0, 0);
+            border: 0px;
+            border-bottom: 3px solid white;
+    
+        }
+        .option{
+            color: black;
+        }
+    }
+</style>
+{%endblock head%}
+
+{%block body%}
+<center style="color: rgb(77, 241, 12);font-size:50px;"><b><u>Profile</u></b></center>
+<div class="div">
+    <form action="/do_update_profile/{{data.id}}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        NAME : <input type="text" placeholder="Enter your name" class="input" name="name" value="{{data.name}}">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+        
+        AGE : <input type="text" placeholder="Enter your age" class="input" name="age" value="{{data.age}}"><br><br><br><br>
+
+        PROFILE : <input type="text" placeholder="Enter your profile" class="input" name="profile" value="{{data.profile}}">&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+
+        Male : <input type="radio" name="gender" class="input" value="{{data.gender}}">
+        female : <input type="radio" name="gender" class="input" value="{{data.gender}}">
+        transgender : <input type="radio" name="gender" value="{{data.gender}}"><br><br><br><br>
+
+        KEYSKILLS : <textarea name="keyskills" cols="10" rows="5" placeholder="enter your keyskills separate by ','" class="input" >{{data.keyskills}}</textarea>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+
+        EDUCATION DETAILS : <textarea name="education" placeholder="mention your education detail" cols="10" rows="5" class="input">{{data.education}}</textarea><br><br><br><br>
+
+        EMPLOYMENT :<select name="employment" aria-placeholder="employment" class="input">
+            <option value="student" class="option">student</option>
+            <option value="employed" class="option">employed</option>
+            <option value="employed" class="option">employed</option>
+            <option value="unemployed" class="option"class="option">unemployed</option>
+            <option value="self employed" class="option">self employed</option>
+            {{data.employment}}
+        </select>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+
+        PROJECT : <textarea name="project" placeholder="add project" cols="30" rows="5" class="input">{{data.project}}</textarea><br><br><br><br>
+
+        project_summary : <textarea name="project_summary" placeholder="project summary" cols="10" rows="5" class="input">{{data.project_summary}}</textarea>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+
+        DESIRED_JOBTYPE : <select name="desired_jobtype" aria-placeholder="job type" class="input">
+            <option value="full-time" class="option">full-time</option>
+            <option value="part-time" class="option">part-time</option>
+            <option value="internship" class="option">internship</option>
+            {{data.desired_jobtype}}
+        </select><br><br><br><br>
+
+        PREFERRED_SHIFT : <select name="preferred_shift" aria-placeholder="preferred-shift" class="input">
+            <option value="day-shift" class="option">day-shift</option>
+            <option value="night-shift" class="option">night-shift</option>
+            <option value="hybrid" class="option">hybrid</option>
+            <option value="remote" class="option">remote</option>
+            {{data.preferred_shift}}
+        </select>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+
+        SALARY : <input type="text" placeholder="expected_salary" class="input" name="salary" value="{{data.expected_salary}}"><br><br><br><br>
+
+        DATE-OF-BIRTH : <input type="date" placeholder="date of birth" class="input" name="dob" value="{{data.dob}}">&nbsp; &nbsp;
+
+        PHOTO_upload : <input type="file" name="photo" placeholder="photo" value="{{data.photo.url}}"><br><br><br><br>
+
+        RESUME : <input type="file" name="resume_upload" placeholder="resume" value="{{data.resume_upload.url}}"><br><br><br>
+        resume_headline : <textarea name="resume_headline"  cols="20" rows="10" class="input">{{data.resume_headline}}</textarea><br><br><br><br>
+        <center><button type="submit" style="color: greenyellow;background:transparent;font-size:20px;">post</button></center>
+    </form>
+
+</div>
+{%endblock body%}

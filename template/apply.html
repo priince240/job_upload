@@ -1,0 +1,84 @@
+{%extends 'index.html'%}
+{%block head%}
+<style>
+    .top{
+        font-size: 50px;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        color: rgb(6, 6, 6) ;
+    }
+    .div{
+        margin: auto;
+        width: 550px;
+        height: auto;
+        margin-top: 20px;
+        padding:20px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        font-size: 25px;
+        border: 3px solid rgb(0, 0, 0);
+        border-radius:10px;
+        box-shadow: 4px 3px 25px 3px rgb(119, 118, 118,);
+        background-color: rgba(220, 218, 218, 0.75);
+        color:rgb(0, 0, 0);
+    }
+    .input {
+        background: transparent;
+        border: 0px;
+        border-bottom:3px solid rgb(2, 2, 2);
+        color:rgb(2, 2, 2)
+    }
+    @media screen and (max-width:700px){
+        .top{
+            font-size: 50px;
+            font-family:Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            color: rgb(0, 0, 0) ;
+        }
+        .div{
+            margin: auto;
+            width: 500px;
+            height: auto;
+            margin-top: 20px;
+            padding:20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 25px;
+            border: 3px solid rgb(2, 2, 2);
+            border-radius:10px;
+            box-shadow: 4px 3px 25px 3px rgba(18, 18, 18);
+            background-color: rgba(215, 212, 212, 0.75);
+            color:rgb(9, 9, 9);
+        }
+        .input {
+            background: transparent;
+            border: 0px;
+            border-bottom:3px solid rgb(9, 9, 9);
+            color:rgb(8, 8, 8)
+        }
+    }
+</style>
+{%endblock head%}
+{%block body%}
+<br><br>
+<center><h1 class="top"><u>APPLY HERE</u></h1></center>
+{%if messages%}
+{%for message in messages%}
+{{message}} <br> 
+{%endfor%}
+{%endif%}
+<br>
+<div class="div">
+    <center><b>JobTitle : {{data1.jobtitle}}</b></center><br>
+    <center><b>company : {{data1.company}}</b></center>
+    <form action="/apply/{{data1.id}}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        Name: <input type="text" name="name" class="input"><br><br>
+        EMAIL: <input type="email" name="email" class="input"><br><br>
+        Resume: <input type="file" name="resume" class="input"><br><br>
+        Candidate_photo : <input type="file" name="candidate_photo" class="input"><br><br>       
+        <center><button type="submit" style="color:rgb(59, 240, 23);border-radius:5px;border:0px;font-weight:bolder;background:transparent">APPLY</button></center>
+    </form>
+</div>
+
+{%endblock body%}

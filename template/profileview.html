@@ -1,0 +1,96 @@
+{%extends 'index.html'%}
+{%block head%}
+<style>
+    .top{
+        font-size: 50px;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        color: rgb(6, 6, 5) ;
+    }
+    .div{
+        margin: auto;
+        width: 550px;
+        height: auto;
+        margin-top: 20px;
+        padding:20px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        font-size: 25px;
+        border: 3px solid rgb(2, 2, 2);
+        border-radius:10px;
+        box-shadow: 4px 3px 25px 3px rgba(0, 0, 0);
+        background-color: rgba(219, 216, 216, 0.75);
+        color:rgb(8, 8, 8);
+    }
+    .input {
+        background: transparent;
+        border: 0px;
+        border-bottom:3px solid rgb(253, 251, 251);
+        color:rgb(2, 2, 2)
+    }
+    @media screen and (max-width:700px){
+        .top{
+            font-size: 50px;
+            font-family:Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            color: rgb(0, 0, 0) ;
+        }
+        .div{
+            margin: auto;
+            width: 500px;
+            height: auto;
+            margin-top: 20px;
+            padding:20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 25px;
+            border: 3px solid rgb(0, 0, 0);
+            border-radius:10px;
+            box-shadow: 4px 3px 25px 3px rgb(7, 7, 7);
+            background-color: rgba(215, 210, 210, 0.75);
+            color:rgb(4, 4, 4);
+        }
+        .input {
+            background: transparent;
+            border: 0px;
+            border-bottom:3px solid rgb(5, 4, 4);
+            color:rgb(2, 2, 2)
+        }
+    }
+</style>
+{%endblock head%}
+{%block body%}
+<br><br>
+<center><h1 class="top"><u>PROFILE</u></h1></center>
+{%if messages%}
+{%for message in messages%}
+{{message}} <br> 
+{%endfor%}
+{%endif%}
+<br>
+<div class="div">
+ <center><img src="{{data.photo.url}}" alt="" style="width: 200px;height:200px"></center><br><br>
+ <center><b>{{data.name}}</b></center>
+ <center><b><u>{{data.profile}}</u></b></center>
+ <p>
+    <span class="top">Personal Detail : </span><br><br>
+    GENDER : {{data.gender}}<br><br>
+    Age : {{data.age}}<br><br>
+    Date-of-Birth : {{data.dob}}<br><br>
+    Resume : {{data.resume_upload}} <br><br>
+    resume_headline : {{data.resume_headline}}<br><br>
+    keyskills : {{data.keyskills}}<br><br>
+    Education : {{data.education}}
+ </p>
+ <p>
+<span class="top">Other Details :</span><br><br>
+    Project : {{data.project}}<br><br>
+    Project_summary : {{data.project_summary}}<br><br>
+    DESIRED_JOBTYPE : {{data.desired_jobtype}}<br><br>
+    Preferred_shift : {{data.preferred_shift}}<br><br>
+    salary : {{data.expected_salary}}<br><br>
+ </p>
+ <center "><a href="/update_profile/{{data.id}}" style="color: rgb(0, 0, 0);">update</a></center>
+</div>
+
+{%endblock body%}
